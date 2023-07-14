@@ -1,0 +1,22 @@
+<div class="wrap">
+  <h1>Может быть интересно</h1>
+  <div class="items">
+    <div
+      class="item-card"
+      *ngFor="let item of this.items"
+      (click)="detail(item.id)"
+    >
+      <img src="{{ item.image }}" alt="" />
+      <p class="name">{{ item.name }}</p>
+      <p>{{ item.status }}</p>
+    </div>
+  </div>
+
+  <div class="more">
+    <div class="line"></div>
+    <div class="link">
+      <a routerLink="/items" routerLinkActive="active-link">Смотреть еще</a>
+      <span class="material-symbols-outlined"> arrow_forward_ios </span>
+    </div>
+  </div>
+</div>
