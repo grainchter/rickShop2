@@ -7,12 +7,16 @@
 
   & > .items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 50px;
 
     & > .item-card {
       width: 100%;
       cursor: pointer;
+
+      & > img {
+        width: 100%;
+      }
 
       & > .name {
         margin-top: 15px;
@@ -22,6 +26,9 @@
 
     & > .item-card:hover {
       margin-top: -25px;
+      -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     }
   }
 

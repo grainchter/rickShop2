@@ -3,12 +3,14 @@
     <div (click)="goToPrevious()" class="leftArrow">❰</div>
     <div (click)="goToNext()" class="rightArrow">❱</div>
   </div>
-  <div class="slide" [ngStyle]="{ 'background-image': getCurrentSlideUrl() }">
-    <div class="special"></div>
-    <div class="info">
-      <h1>{{ getCurrentTitle() }}</h1>
-      <p class="species">{{ getCurrentSpecies() }}</p>
-      <button (click)="detail(getCurrentId())">Подробнее</button>
+  <div class="slide">
+    <div class="item">
+      <h2>{{ getCurrentQuestion() }}</h2>
+      <p>{{ getCurrentAnswer() }}</p>
+    </div>
+    <div class="item">
+      <h2>{{ getNextQuestion() }}</h2>
+      <p>{{ getNextAnswer()}}</p>
     </div>
   </div>
 

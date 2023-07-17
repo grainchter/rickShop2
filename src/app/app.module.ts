@@ -17,7 +17,9 @@ import { HomeBlock2Component } from './home/home-block2/home-block2.component';
 import { HomeBlock3Component } from './home/home-block3/home-block3.component';
 import { HomeBlock4Component } from './home/home-block4/home-block4.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ImageSliderModule } from './slider/imageSlider.module';
+import { ImageSliderModule } from './slider/components/imageSlider.module';
+import { QaSliderModule } from './slider/components/qaSlider.module';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -35,6 +37,7 @@ import { ImageSliderModule } from './slider/imageSlider.module';
     HomeBlock2Component,
     HomeBlock3Component,
     HomeBlock4Component,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { ImageSliderModule } from './slider/imageSlider.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ImageSliderModule,
+    QaSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

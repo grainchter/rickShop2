@@ -7,58 +7,74 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  items:any;
-  currentItem:any;
-  
-  constructor(private itemsService: ItemsService, private router: Router) {
-  
-  }
-  
+  items: any;
+  currentItem: any;
+  status = ['Alive', 'Dead', 'unlnown'];
+
+  gender = ['Female', 'Male', 'Genderless', 'unknown'];
+
+  species = [
+    'Alien',
+    'Animal',
+    'Human',
+    'Humanoid',
+    'Mytholog',
+    'Poppybutthole',
+    'Rovot',
+    'unknown',
+  ];
+
+  constructor(private itemsService: ItemsService, private router: Router) {}
+
   filterForm = new FormGroup({
     search: new FormControl(''),
     gender: new FormControl(''),
+    species: new FormControl(''),
+    status: new FormControl(''),
   });
-  
+
   ngOnInit() {
     this.getItems();
   }
-  
+
   getItems(): void {
     if (this.filterForm.value) {
-      this.itemsService.getItems(this.filterForm.value)
-      .subscribe(items => this.items = items);
+      this.itemsService
+        .getItems(this.filterForm.value)
+        .subscribe((items) => (this.items = items));
     }
   }
-  
-  getItemsByUrl(url:string) {
-    this.itemsService.getItemsByUrl(url)
-    .subscribe(items => this.items = items);
+
+  getItemsByUrl(url: string) {
+    this.itemsService
+      .getItemsByUrl(url)
+      .subscribe((items) => (this.items = items));
   }
-  
+
   getResults() {
     return this.items?.results;
   }
-  
-  modal(name:any) {
-  this.currentItem = name
+
+  modal(name: any) {
+    this.currentItem = name;
   }
-  
+
   getPrevPage() {
-    let info =  this.items?.info;
-    return info.prev
+    let info = this.items?.info;
+    return info.prev;
   }
-  
+
   getNextPage() {
-    let info =  this.items?.info;
+    let info = this.items?.info;
     console.log(info);
-    
-    return info.next
+
+    return info.next;
   }
-  
-  detail(characterId: number): void {    
+
+  detail(characterId: number): void {
     this.router.navigate(['items', characterId]);
   }
 }

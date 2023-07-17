@@ -7,18 +7,18 @@ import {
   switchMap,
   timer,
 } from 'rxjs';
-import { SlideInterface } from '../../types/slide.interface';
+import { QaSlideInterface, SlideInterface } from '../../types/slide.interface';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'image-slider',
-  templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.scss'],
+  selector: 'qa-slider',
+  templateUrl: './qa-slider.component.html',
+  styleUrls: ['./qa-slider.component.scss'],
 })
-export class ImageSliderComponent implements OnInit, OnDestroy {
+export class QaSliderComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
-  @Input() slides: SlideInterface[] = [];
+  @Input() slides: QaSlideInterface[] = [];
 
   currentIndex: number = 0;
   timeoutId?: number;
@@ -59,20 +59,26 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
     this.currentIndex = slideIndex;
   }
 
-  getCurrentSlideUrl() {
-    return `url('${this.slides[this.currentIndex].url}')`;
+  getCurrentQuestion() {
+    return this.slides[this.currentIndex].question;
   }
 
-  getCurrentTitle() {
-    return this.slides[this.currentIndex].title;
+  getCurrentAnswer() {
+    return this.slides[this.currentIndex].answer;
   }
 
-  getCurrentSpecies() {
-    return this.slides[this.currentIndex].species;
+  getNextQuestion() {
+    return this.slides[this.currentIndex] ===
+      this.slides[this.slides.length - 1]
+      ? this.slides[0].question
+      : this.slides[this.currentIndex + 1].question;
   }
 
-  getCurrentId() {
-    return this.slides[this.currentIndex].id;
+  getNextAnswer() {
+    return this.slides[this.currentIndex] ===
+      this.slides[this.slides.length - 1]
+      ? this.slides[0].answer
+      : this.slides[this.currentIndex + 1].answer;
   }
 
   detail(characterId: number): void {

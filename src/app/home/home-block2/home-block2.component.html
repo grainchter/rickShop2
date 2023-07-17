@@ -1,1 +1,17 @@
-<p>home-block2 works!</p>
+<div class="wrap">
+  <h1>почему rickShop?</h1>
+  <div class="items">
+    <div class="item-card" *ngFor="let item of this.items">
+      <img src="{{ item.img }}" alt="" />
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur
+    interdum mi, nec aliquam velit hendrerit a. In velit justo, condimentum ac
+    ornare vitae, scelerisque facilisis felis. Aliquam erat volutpat. Nulla eget
+    felis purus. Nulla facilisi. Curabitur dui diam, volutpat vel congue eu,
+    commodo vitae massa.
+  </p>
+  <div class="line"></div>
+</div>

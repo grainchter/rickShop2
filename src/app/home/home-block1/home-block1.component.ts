@@ -22,7 +22,7 @@ export class HomeBlock1Component {
   }
 
   createItems(items: any) {
-    const idArr = this.generateArray(6, items.count);
+    const idArr = this.generateArray(8, items.count);
 
     idArr.forEach((id) => {
       this.itemsService
