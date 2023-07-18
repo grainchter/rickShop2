@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ItemsService {
-  // private urlParams: any = {};
   private url = 'https://rickandmortyapi.com/api/character/';
   items: any;
   urlParams: any = {};
@@ -18,7 +17,9 @@ export class ItemsService {
       this.url +
       `?page=${urlParams.page ? urlParams.page : ''}&name=${
         urlParams.search ? urlParams.search : ''
-      }`;
+      }&status=${urlParams.status ? urlParams.status : ''}&species=${
+        urlParams.species ? urlParams.species : ''
+      }&gender=${urlParams.gender ? urlParams.gender : ''}`;
 
     return this.httpClient.get(filterUrl);
   }
@@ -31,5 +32,4 @@ export class ItemsService {
     let finalUrl = this.url + id;
     return this.httpClient.get(finalUrl);
   }
-
 }

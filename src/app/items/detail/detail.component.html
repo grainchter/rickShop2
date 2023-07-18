@@ -1,3 +1,18 @@
-<p>{{item?.name}}</p>
+<main>
+  <div class="wrap">
+    <div class="block1">
+      <img src="{{ item?.image }}" alt="" />
+    </div>
+    <div class="block2">
+      <h1>{{ item?.name }}</h1>
+      <p>{{ item?.status }}</p>
+      <p>{{ item?.species }}</p>
+      <div class="btns">
+        <span class="material-symbols-outlined favorite"> favorite </span>
+        <span class="material-symbols-outlined"> shopping_basket </span>
+      </div>
+    </div>
+  </div>
+</main>
 
 <!-- <router-outlet></router-outlet> -->

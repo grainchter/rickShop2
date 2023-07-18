@@ -1,5 +1,11 @@
 <main>
   <div class="wrap">
+    <div class="clear">
+      <button (click)="clearFilter()">
+        <span class="material-symbols-outlined"> filter_list_off </span>
+      </button>
+    </div>
+
     <form [formGroup]="filterForm">
       <input
         type="text"
@@ -7,13 +13,51 @@
         id=""
         formControlName="search"
         (input)="getItems()"
+        placeholder="Введите имя персонажа..."
       />
-      <select name="" id="" formControlName="gender" (change)="getItems()">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <label for="gender"
+        >gender
+        <select
+          name=""
+          id="gender"
+          formControlName="gender"
+          (change)="getItems()"
+        >
+          <option *ngFor="let item of gender" value="{{ item }}">
+            {{ item }}
+          </option>
+        </select>
+      </label>
+
+      <label for=""
+        >status
+        <select
+          name=""
+          id="status"
+          formControlName="status"
+          (change)="getItems()"
+        >
+          <option *ngFor="let item of status" value="{{ item }}">
+            {{ item }}
+          </option>
+        </select>
+      </label>
+
+      <label for="species"
+        >species
+        <select
+          name=""
+          id="species"
+          formControlName="species"
+          (change)="getItems()"
+        >
+          <option *ngFor="let item of species" value="{{ item }}">
+            {{ item }}
+          </option>
+        </select>
+      </label>
     </form>
-  
+
     <div class="items">
       <div
         class="item-card"
@@ -21,18 +65,27 @@
         (click)="detail(item.id)"
       >
         <img src="{{ item.image }}" alt="" />
-        <p class="name">{{ item.name }}</p>
+        <div class="desc">
+          <p class="name">{{ item.name }}</p>
+          <span class="material-symbols-outlined favorite"> favorite </span>
+          <span class="material-symbols-outlined"> shopping_basket </span>
+        </div>
       </div>
     </div>
-  
+
     <div class="navigation">
-      <button (click)="getItemsByUrl(getPrevPage())">
+      <button
+        (click)="getItemsByUrl(getPrevPage())"
+        *ngIf="getPrevPage() !== null"
+      >
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
       </button>
-      <button (click)="getItemsByUrl(getNextPage())">
+      <button
+        (click)="getItemsByUrl(getNextPage())"
+        *ngIf="getNextPage() !== null"
+      >
         <span class="material-symbols-outlined"> arrow_forward_ios </span>
       </button>
     </div>
   </div>
-  
 </main>

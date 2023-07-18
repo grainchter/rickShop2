@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ItemsService } from 'src/app/services/items.service';
 
 import { Router } from '@angular/router';
+import { catchError, of, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
 export class ListComponent {
   items: any;
   currentItem: any;
-  status = ['Alive', 'Dead', 'unlnown'];
+
+  status = ['Alive', 'Dead', 'unknown'];
 
   gender = ['Female', 'Male', 'Genderless', 'unknown'];
 
@@ -23,7 +25,7 @@ export class ListComponent {
     'Humanoid',
     'Mytholog',
     'Poppybutthole',
-    'Rovot',
+    'Robot',
     'unknown',
   ];
 
@@ -42,8 +44,10 @@ export class ListComponent {
 
   getItems(): void {
     if (this.filterForm.value) {
-      this.itemsService
-        .getItems(this.filterForm.value)
+      const http$ = this.itemsService.getItems(this.filterForm.value);
+
+      http$
+        .pipe(catchError((err) => of([])))
         .subscribe((items) => (this.items = items));
     }
   }
@@ -64,14 +68,19 @@ export class ListComponent {
 
   getPrevPage() {
     let info = this.items?.info;
-    return info.prev;
+    
+    return info ? info.prev : null;
   }
 
   getNextPage() {
     let info = this.items?.info;
-    console.log(info);
 
-    return info.next;
+    return info ? info.next : null;
+  }
+
+  clearFilter() {
+    this.filterForm.reset();
+    this.getItems()
   }
 
   detail(characterId: number): void {
