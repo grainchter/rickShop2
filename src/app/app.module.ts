@@ -20,6 +20,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageSliderModule } from './slider/components/imageSlider.module';
 import { QaSliderModule } from './slider/components/qaSlider.module';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
 
 
 
@@ -38,6 +45,7 @@ import { FooterComponent } from './footer/footer.component';
     HomeBlock3Component,
     HomeBlock4Component,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,12 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ImageSliderModule,
-    QaSliderModule
+    QaSliderModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

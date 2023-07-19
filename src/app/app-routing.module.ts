@@ -5,6 +5,7 @@ import { ItemsComponent } from './items/items.component';
 import { DetailComponent } from './items/detail/detail.component';
 import { ListComponent } from './items/list/list.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
       },
     ],
   },

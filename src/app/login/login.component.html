@@ -1,0 +1,33 @@
+<main>
+  <form [formGroup]="loginForm" (ngSubmit)="activeForm ? login() : register()">
+    <div class="wrap">
+      <div class="inputWrap">
+        <input
+          formControlName="login"
+          type="email"
+          name=""
+          #userEmail
+          placeholder="Введите электронную почту..."
+        />
+        <input
+          formControlName="password"
+          type="password"
+          name=""
+          #userPwd
+          placeholder="Введите пароль..."
+        />
+      </div>
+
+      <button type="submit">{{ activeForm ? "Вход" : "Регистрация" }}</button>
+
+      <p (click)="setActiveForm()">
+        {{
+          activeForm
+            ? "Нет аккаунта? Зарегистрироваться"
+            : "Вернуться на страницу входа"
+        }}
+      </p>
+    </div>
+  </form>
+
+</main>
